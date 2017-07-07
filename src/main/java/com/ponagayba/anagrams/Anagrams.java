@@ -8,13 +8,10 @@ public class Anagrams {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("Enter a string of words:");
         String input = reader.readLine();
         char[] array = input.toCharArray();
-
         wordsAnagrams(array);
-
         System.out.println(array);
     }
 
@@ -23,14 +20,14 @@ public class Anagrams {
             if (array[start] == ' ')
                 continue;
             end = start;
-            while (end != array.length-1 && array[end+1] != ' ')
+            while (end != array.length - 1 && array[end + 1] != ' ')
                 end++;
-            for (int i = start, j = end; i <= (end+start)/2; i++, j--) {
+            for (int i = start, j = end; i <= (end + start) / 2; i++, j--) {
                 char temp = array[j];
                 array[j] = array[i];
                 array[i] = temp;
             }
-            start = end+1;
+            start = end + 1;
         }
     }
 }
