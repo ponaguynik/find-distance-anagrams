@@ -10,24 +10,20 @@ public class Anagrams {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter a string of words:");
         String input = reader.readLine();
-        char[] array = input.toCharArray();
-        wordsAnagrams(array);
-        System.out.println(array);
+        printWordsAnagrams(input, input.length()-1);
     }
 
-    private static void wordsAnagrams(char[] array) {
-        for (int start = 0, end; start < array.length; start++) {
-            if (array[start] == ' ')
-                continue;
-            end = start;
-            while (end != array.length - 1 && array[end + 1] != ' ')
-                end++;
-            for (int i = start, j = end; i <= (end + start) / 2; i++, j--) {
-                char temp = array[j];
-                array[j] = array[i];
-                array[i] = temp;
-            }
-            start = end + 1;
+    private static void printWordsAnagrams(String str, int end) {
+        if (end < 0)
+            return;
+        int length = 0, endNext = end;
+        while (endNext >= 0 && str.charAt(endNext) != ' ') {
+            length++;
+            endNext--;
         }
+        printWordsAnagrams(str, --endNext);
+        for (int i = 0; i < length; i++, end--)
+            System.out.print(str.charAt(end));
+        System.out.print(" ");
     }
 }
