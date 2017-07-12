@@ -13,7 +13,7 @@ public class Anagrams {
         printWordsAnagrams(input, input.length()-1);
     }
 
-    private static void printWordsAnagrams(String str, int end) {
+    public static void printWordsAnagrams(String str, int end) {
         if (end < 0)
             return;
         int length = 0, endNext = end;
